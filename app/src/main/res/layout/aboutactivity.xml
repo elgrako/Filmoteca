@@ -7,74 +7,85 @@
 
     <Button
         android:id="@+id/webButton"
-        android:layout_width="382dp"
-        android:layout_height="93dp"
+        android:layout_width="411dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="512dp"
         android:text="Ir a la web"
         android:textColorLink="@color/design_default_color_primary"
         app:cornerRadius="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.413"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.736" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/volverButton"
-        android:layout_width="383dp"
-        android:layout_height="81dp"
+        android:layout_width="412dp"
+        android:layout_height="73dp"
         android:text="Volver"
         app:cornerRadius="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/soporteButton"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/soporteButton"
-        android:layout_width="384dp"
-        android:layout_height="84dp"
-        android:layout_marginBottom="84dp"
+        android:layout_width="411dp"
+        android:layout_height="79dp"
         android:text="Soporte"
         app:cornerRadius="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/webButton" />
 
     <TextView
         android:id="@+id/creador"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="205dp"
+        android:layout_height="36dp"
         android:text="Creado por Lucas Candela"
-        app:layout_constraintBottom_toTopOf="@+id/imgabout"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/volverButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.756" />
+        app:layout_constraintVertical_bias="0.147" />
 
     <ImageView
         android:id="@+id/imgabout"
-        android:layout_width="275dp"
-        android:layout_height="255dp"
-        android:layout_marginBottom="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/webButton"
+        android:layout_width="288dp"
+        android:layout_height="260dp"
+        android:layout_marginBottom="312dp"
+        android:src="@drawable/imgabout"
+        app:layout_constraintBottom_toBottomOf="@+id/volverButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/aboutText"
-        android:layout_width="407dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="52dp"
-        android:drawableStart="@android:drawable/btn_star_big_on"
-        android:paddingTop="10dp"
-        android:paddingRight="250dp"
+        android:layout_width="411dp"
+        android:layout_height="63dp"
+        android:background="#664FA3"
+        android:drawableStart="@android:drawable/ic_menu_info_details"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:text="Filmoteca"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/creador"
-        tools:layout_editor_absoluteX="2dp" />
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
