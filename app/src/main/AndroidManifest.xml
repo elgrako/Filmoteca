@@ -11,12 +11,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Material3.DynamicColors.Dark.NoActionBar"
         tools:targetApi="31">
+
+        <activity android:name=".AboutActivity" />
         <activity
-            android:name=".AboutActivity"
+            android:name=".FilmListActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
