@@ -1,5 +1,7 @@
 package com.example.filmoteca_lucascandela;
 
+import static com.example.filmoteca_lucascandela.FilmDataSource.films;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,9 +31,9 @@ public class FilmListActivity extends AppCompatActivity {
 
         FilmDataSource.Initialize();
 
-        ListView filmListView = findViewById(R.id.filmListView);
+        filmListView = findViewById(R.id.filmListView);
 
-        FilmAdapter adapter = new FilmAdapter(this, R.layout.item_film, FilmDataSource.films);
+        FilmAdapter adapter = new FilmAdapter(this, R.layout.item_film, films);
 
         filmListView.setAdapter(adapter);
 

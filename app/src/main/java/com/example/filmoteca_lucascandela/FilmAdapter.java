@@ -8,11 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FilmAdapter extends ArrayAdapter<Film> {
@@ -25,40 +23,35 @@ public class FilmAdapter extends ArrayAdapter<Film> {
         myfilms = objects;
     }
 
-    private class ViewHolder {
+    private static class ViewHolder {
         TextView filmTitleView;
         TextView filmDirectorView;
         ImageView filmImageView;
     }
-
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         ViewHolder holder;
 
         if (convertView == null) {
-            LayoutInflater myInflater = LayoutInflater.from(this.getContext());
-            View view = myInflater.inflate(fResource, parent, false);
+            LayoutInflater myInflater = LayoutInflater.from(getContext());
+            convertView = myInflater.inflate(fResource, parent, false);
 
-        holder = new ViewHolder();
-        holder.filmTitleView = convertView.findViewById(R.id.titulo);
-        holder.filmTitleView.setText(myfilms.get(position).getTitle());
+            holder = new ViewHolder();
+            holder.filmTitleView = convertView.findViewById(R.id.titulo);
+            holder.filmDirectorView = convertView.findViewById(R.id.director);
+            holder.filmImageView = convertView.findViewById(R.id.imageView);
 
-        holder.filmDirectorView = convertView.findViewById(R.id.director);
-        holder.filmDirectorView.setText(myfilms.get(position).getDirector());
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
 
-        holder.filmImageView = convertView.findViewById(R.id.imageView);
-        holder.filmImageView.setImageResource(myfilms.get(position).getImageResId());
+        Film filmActual = myfilms.get(position);
 
-        convertView.setTag(holder);
-    }
-     else {
-        holder = (ViewHolder) convertView.getTag();
-    }
-     Film filmActual = myfilms.get(position);
-     holder.filmTitleView.setText(filmActual.getTitle());
-     holder.filmDirectorView.setText(filmActual.getDirector());
-     holder.filmImageView.setImageResource(filmActual.getImageResId());
-
+        holder.filmTitleView.setText(filmActual.getTitle());
+        holder.filmDirectorView.setText(filmActual.getDirector());
+        holder.filmImageView.setImageResource(filmActual.getImageResId());
 
         return convertView;
     }

@@ -32,10 +32,6 @@ public class Film {
         this.comments = comments;
     }
 
-    public Film(String title, String director, int imageResId){
-
-    }
-
     public int getImageResId() {
         return imageResId;
     }
