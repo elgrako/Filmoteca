@@ -9,29 +9,55 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class FilmAdapter extends ArrayAdapter<Film> {
+    private int fResource;
+    private List<Film> myfilms;
 
+    public FilmAdapter(Context context, int resource, List<Film> objects) {
+        super(context, resource, objects);
+        fResource = resource;
+        myfilms = objects;
+    }
 
-    public FilmAdapter(Context context, List<Film> films) {
-        super(context,0, films);
+    private class ViewHolder {
+        TextView filmTitleView;
+        TextView filmDirectorView;
+        ImageView filmImageView;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_film, parent, false);
-        }
-        Film currentFilm = getItem(position);
+        ViewHolder holder;
 
-        ImageView filmImageView = convertView.findViewById(R.id.filmImage);
-        TextView filmTitleView = convertView.findViewById(R.id.filmTitle);
-        TextView filmDirectorView = convertView.findViewById(R.id.filmDirector);
+        if (convertView == null) {
+            LayoutInflater myInflater = LayoutInflater.from(this.getContext());
+            View view = myInflater.inflate(fResource, parent, false);
 
-        filmImageView.setImageResource(currentFilm.getImageResId());
-        filmTitleView.setText(currentFilm.getTitle());
-        filmDirectorView.setText(currentFilm.getDirector());
+        holder = new ViewHolder();
+        holder.filmTitleView = convertView.findViewById(R.id.titulo);
+        holder.filmTitleView.setText(myfilms.get(position).getTitle());
+
+        holder.filmDirectorView = convertView.findViewById(R.id.director);
+        holder.filmDirectorView.setText(myfilms.get(position).getDirector());
+
+        holder.filmImageView = convertView.findViewById(R.id.imageView);
+        holder.filmImageView.setImageResource(myfilms.get(position).getImageResId());
+
+        convertView.setTag(holder);
+    }
+     else {
+        holder = (ViewHolder) convertView.getTag();
+    }
+     Film filmActual = myfilms.get(position);
+     holder.filmTitleView.setText(filmActual.getTitle());
+     holder.filmDirectorView.setText(filmActual.getDirector());
+     holder.filmImageView.setImageResource(filmActual.getImageResId());
 
 
         return convertView;

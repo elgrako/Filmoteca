@@ -35,7 +35,8 @@ public class FilmDataSource {
         f = new Film(R.drawable.elresplandor, "El Resplandor", "Stanley Kubrick", 1980,
                 Film.GENRE_DRAMA, Film.FORMAT_DIGITAL, "https://www.imdb.com/title/tt0081505/?ref_=chtmvm_t_5",
                 "Una familia se dirige a un hotel aislado para pasar el invierno. " +
-                        "Allí, una presencia espiritual maligna violenta al padre, mientras el hijo, psíquico, tiene horripilantes visiones del pasado y del futuro.");
+                        "Allí, una presencia espiritual maligna violenta al padre, mientras el hijo, psíquico, " +
+                        "tiene horripilantes visiones del pasado y del futuro.");
 
         films.add(f);
 
