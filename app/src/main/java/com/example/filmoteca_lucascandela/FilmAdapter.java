@@ -39,7 +39,7 @@ public class FilmAdapter extends ArrayAdapter<Film> {
 
             holder = new ViewHolder();
             holder.filmTitleView = convertView.findViewById(R.id.titulo);
-            holder.filmDirectorView = convertView.findViewById(R.id.director);
+            holder.filmDirectorView = convertView.findViewById(R.id.directorFilmActivity);
             holder.filmImageView = convertView.findViewById(R.id.imageView);
 
             convertView.setTag(holder);
