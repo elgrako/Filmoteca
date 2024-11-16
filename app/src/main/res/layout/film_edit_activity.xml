@@ -1,0 +1,106 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/filmImageView"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/interstellar"
+        android:contentDescription="Imagen de la película" />
+
+    <!-- Botones de imagen -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/captureImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="CAPTURA IMAGEN" />
+
+        <Button
+            android:id="@+id/selectImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SELECCIONA IMAGEN" />
+    </LinearLayout>
+
+    <!-- Campos de texto -->
+    <EditText
+        android:id="@+id/titleEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Título"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/directorEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Director"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/yearEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Año"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/urlEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="URL"
+        android:inputType="textUri" />
+
+    <!-- Spinner para género -->
+    <Spinner
+        android:id="@+id/genreSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Spinner para formato -->
+    <Spinner
+        android:id="@+id/formatSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/commentsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Comentarios"
+        android:inputType="textMultiLine"
+        android:minLines="3" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="CANCELAR" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GUARDAR" />
+    </LinearLayout>
+</LinearLayout>
