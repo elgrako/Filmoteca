@@ -3,7 +3,9 @@ package com.example.filmoteca_lucascandela;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -56,6 +58,44 @@ public class FilmDataActivity extends AppCompatActivity {
             editIntent.putExtra("FILM_POSITION", position);
             startActivity(editIntent);
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            //case R.id.action_about:
+                Intent aboutIntent = new Intent(this, AboutActivity.class);
+                startActivity(aboutIntent);
+                return true;
+
+            //case R.id.action_add_film:
+                Film newFilm = new Film(
+                        "Nueva Película",
+                        "Director por Defecto",
+                        2024,
+                        Film.GENRE_ACTION,
+                        Film.FORMAT_DIGITAL,
+                        "Descripción por defecto",
+                        R.drawable.default_image,
+                        "https://www.imdb.com"
+                );
+                FilmDataSource.films.add(newFilm);
+
+                Intent refreshIntent = new Intent(this, MainActivity.class);
+                refreshIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(refreshIntent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private String getGenreString(int genre) {
