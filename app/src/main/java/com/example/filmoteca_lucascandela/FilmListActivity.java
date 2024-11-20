@@ -31,8 +31,16 @@ public class FilmListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(FilmListActivity.this, FilmDataActivity.class);
                 intent.putExtra("FILM_POSITION", position);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && data != null) {
+            ((FilmAdapter) filmListView.getAdapter()).notifyDataSetChanged();
+        }
     }
 }

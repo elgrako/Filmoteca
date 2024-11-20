@@ -1,5 +1,6 @@
 package com.example.filmoteca_lucascandela;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -27,7 +28,7 @@ public class FilmEditActivity extends AppCompatActivity {
         position = getIntent().getIntExtra("FILM_POSITION", -1);
 
         if (position < 0 || position >= FilmDataSource.films.size()) {
-            Toast.makeText(this, "Película no encontrada.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Película no encontrada", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -43,13 +44,17 @@ public class FilmEditActivity extends AppCompatActivity {
 
         saveButton.setOnClickListener(v -> {
             if (saveChanges()) {
-                Toast.makeText(this, "Cambios aplicados.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Cambios aplicados", Toast.LENGTH_SHORT).show();
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("FILM_POSITION", position);
+                setResult(RESULT_OK, resultIntent);
                 finish();
             }
         });
 
         cancelButton.setOnClickListener(v -> {
-            Toast.makeText(this, "Cambios cancelados.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Cambios cancelados", Toast.LENGTH_SHORT).show();
+            setResult(RESULT_CANCELED);
             finish();
         });
     }
@@ -70,11 +75,9 @@ public class FilmEditActivity extends AppCompatActivity {
         String[] formats = {"Digital", "DVD", "Blu-Ray"};
 
         ArrayAdapter<String> genreAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, genres);
-        genreAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genreSpinner.setAdapter(genreAdapter);
 
         ArrayAdapter<String> formatAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, formats);
-        formatAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         formatSpinner.setAdapter(formatAdapter);
     }
 
@@ -106,7 +109,7 @@ public class FilmEditActivity extends AppCompatActivity {
             String comments = commentsEditText.getText().toString().trim();
 
             if (title.isEmpty() || director.isEmpty() || yearString.isEmpty()) {
-                Toast.makeText(this, "Completa todos los campos.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Rellena todos los campos", Toast.LENGTH_SHORT).show();
                 return false;
             }
 
@@ -122,7 +125,7 @@ public class FilmEditActivity extends AppCompatActivity {
 
             return true;
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "Pon un año valido.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Pon un año valido", Toast.LENGTH_SHORT).show();
             return false;
         }
     }

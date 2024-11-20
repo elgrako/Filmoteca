@@ -1,106 +1,164 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
 
+
+    <!-- Spinner para género -->
+
+    <!-- Spinner para formato -->
+
+
     <ImageView
         android:id="@+id/filmImageView"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:src="@drawable/interstellar"
-        android:contentDescription="Imagen de la película" />
+        app:layout_constraintBottom_toTopOf="@+id/titleEditText"
+        app:layout_constraintEnd_toStartOf="@+id/captureImageButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Botones de imagen -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="8dp">
+    <Button
+        android:id="@+id/captureImageButton"
+        android:layout_width="112dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="2dp"
+        android:text="CAPTURA IMAGEN"
+        android:textSize="12dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/selectImageButton"
+        app:layout_constraintEnd_toStartOf="@+id/selectImageButton"
+        app:layout_constraintStart_toEndOf="@+id/filmImageView" />
 
-        <Button
-            android:id="@+id/captureImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="CAPTURA IMAGEN" />
+    <Button
+        android:id="@+id/selectImageButton"
+        android:layout_width="122dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="20dp"
+        android:text="SELECCIONA IMAGEN"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/captureImageButton"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/selectImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SELECCIONA IMAGEN" />
-    </LinearLayout>
-
-    <!-- Campos de texto -->
     <EditText
         android:id="@+id/titleEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginBottom="49dp"
         android:hint="Título"
-        android:inputType="text" />
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/directorEditText"
+        app:layout_constraintEnd_toEndOf="@+id/directorEditText"
+        app:layout_constraintStart_toStartOf="@+id/directorEditText"
+        app:layout_constraintTop_toBottomOf="@+id/selectImageButton" />
 
-    <EditText
-        android:id="@+id/directorEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Director"
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/yearEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Año"
-        android:inputType="number" />
+    <Spinner
+        android:id="@+id/genreSpinner"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="54dp"
+        app:layout_constraintBottom_toTopOf="@+id/commentsEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearEditText" />
 
     <EditText
         android:id="@+id/urlEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginEnd="19dp"
         android:hint="URL"
-        android:inputType="textUri" />
+        android:inputType="textUri"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/directorEditText" />
 
-    <!-- Spinner para género -->
-    <Spinner
-        android:id="@+id/genreSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <!-- Spinner para formato -->
     <Spinner
         android:id="@+id/formatSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/commentsEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/genreSpinner" />
+
+    <EditText
+        android:id="@+id/yearEditText"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginBottom="50dp"
+        android:hint="Año"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/urlEditText"
+        app:layout_constraintEnd_toEndOf="@+id/urlEditText"
+        app:layout_constraintStart_toStartOf="@+id/urlEditText"
+        app:layout_constraintTop_toTopOf="@+id/directorEditText" />
+
+    <EditText
+        android:id="@+id/directorEditText"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="159dp"
+        android:layout_marginEnd="17dp"
+        android:hint="Director"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/commentsEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="365dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="184dp"
         android:hint="Comentarios"
         android:inputType="textMultiLine"
-        android:minLines="3" />
+        android:minLines="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="8dp">
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="84dp"
+        android:text="CANCELAR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/saveButton" />
 
-        <Button
-            android:id="@+id/cancelButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="CANCELAR" />
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:text="GUARDAR"
+        app:layout_constraintBaseline_toBaselineOf="@+id/cancelButton"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <Button
-            android:id="@+id/saveButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GUARDAR" />
-    </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
