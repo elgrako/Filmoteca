@@ -19,6 +19,7 @@ public class FilmEditActivity extends AppCompatActivity {
     private ImageView filmImageView;
     private EditText titleEditText, directorEditText, yearEditText, urlEditText, commentsEditText;
     private Spinner genreSpinner, formatSpinner;
+    private Button captureButton, selectButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class FilmEditActivity extends AppCompatActivity {
 
         saveButton.setOnClickListener(v -> {
             if (saveChanges()) {
-                Toast.makeText(this, "Cambios aplicados", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Cambios aplicados correctamente", Toast.LENGTH_SHORT).show();
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("FILM_POSITION", position);
                 setResult(RESULT_OK, resultIntent);
@@ -53,9 +54,17 @@ public class FilmEditActivity extends AppCompatActivity {
         });
 
         cancelButton.setOnClickListener(v -> {
-            Toast.makeText(this, "Cambios cancelados", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Los cambios han sido cancelados", Toast.LENGTH_SHORT).show();
             setResult(RESULT_CANCELED);
             finish();
+        });
+
+        captureButton.setOnClickListener(v -> {
+            Toast.makeText(this, "Funcionalidad no Implementada", Toast.LENGTH_SHORT).show();
+        });
+
+        selectButton.setOnClickListener(v -> {
+            Toast.makeText(this, "Funcionalidad no Implementada", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -68,6 +77,8 @@ public class FilmEditActivity extends AppCompatActivity {
         commentsEditText = findViewById(R.id.commentsEditText);
         genreSpinner = findViewById(R.id.genreSpinner);
         formatSpinner = findViewById(R.id.formatSpinner);
+        captureButton = findViewById(R.id.captureImageButton);
+        selectButton = findViewById(R.id.selectImageButton);
     }
 
     private void setupSpinners() {
