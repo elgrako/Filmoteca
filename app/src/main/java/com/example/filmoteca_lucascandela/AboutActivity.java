@@ -17,6 +17,10 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.aboutactivity);
 
+        if( getSupportActionBar() != null){
+            getSupportActionBar().setTitle("Sobre Nosotros");
+        }
+
         Button webButton = findViewById(R.id.webButton);
         Button soporteButton = findViewById(R.id.soporteButton);
         Button volverButton = findViewById(R.id.volverButton);

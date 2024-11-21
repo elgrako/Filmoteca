@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string name="web_button_text">Go to website</string>
+        <string name="volver_button_text">Back</string>
+        <string name="soporte_button_text">Support</string>
+        <string name="creador_text">Created by Lucas Candela</string>
+        <string name="about_text">Filmoteca</string>
+        <string name="year_label">Year:</string>
+        <string name="imdb_button_text">VIEW ON IMDB</string>
+        <string name="back_button_text">BACK TO MAIN</string>
+        <string name="director_text">Director:</string>
+        <string name="edit_button_text">EDIT FILM</string>
+        <string name="capture_image_button_text">CAPTURE IMAGE</string>
+        <string name="select_image_button_text">SELECT IMAGE</string>
+        <string name="save_button_text">SAVE</string>
+        <string name="cancel_button_text">CANCEL</string>
+        <string name="hint_title">Títle</string>
+        <string name="hint_url">URL</string>
+        <string name="hint_director">Director</string>
+        <string name="hint_year">Year</string>
+        <string name="hint_comments">Comments</string>
+        <string name="menu_about">About</string>
+        <string name="menu_add">Add Film</string>
+</resources>

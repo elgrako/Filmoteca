@@ -26,6 +26,10 @@ public class FilmEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.film_edit_activity);
 
+        if( getSupportActionBar() != null){
+            getSupportActionBar().setTitle("Filmoteca Editor");
+        }
+
         position = getIntent().getIntExtra("FILM_POSITION", -1);
 
         if (position < 0 || position >= FilmDataSource.films.size()) {

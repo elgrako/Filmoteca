@@ -24,6 +24,10 @@ public class FilmDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.film_data_activity);
 
+        if( getSupportActionBar() != null){
+            getSupportActionBar().setTitle("Filmoteca Informacion");
+        }
+
         initialize();
 
         Intent intent = getIntent();

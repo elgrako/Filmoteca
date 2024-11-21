@@ -20,6 +20,10 @@ public class FilmListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.peliculas);
 
+        if( getSupportActionBar() != null){
+            getSupportActionBar().setTitle("Filmoteca");
+        }
+
         FilmDataSource.Initialize();
 
         filmListView = findViewById(R.id.filmListView);
@@ -44,9 +48,7 @@ public class FilmListActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1 && data != null) {
-            ((FilmAdapter) filmListView.getAdapter()).notifyDataSetChanged();
-        }
+        ((FilmAdapter) filmListView.getAdapter()).notifyDataSetChanged();
     }
 
     @Override
