@@ -1,7 +1,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,150 +9,151 @@
 
     <ImageView
         android:id="@+id/filmImageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="111dp"
+        android:layout_height="125dp"
         android:src="@drawable/interstellar"
-        app:layout_constraintBottom_toTopOf="@+id/titleEditText"
-        app:layout_constraintEnd_toStartOf="@+id/captureImageButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.039"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/captureImageButton"
-        android:layout_width="112dp"
-        android:layout_height="53dp"
-        android:layout_marginEnd="2dp"
-        android:text="@string/capture_image_button_text"
-        android:textSize="12dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/selectImageButton"
-        app:layout_constraintEnd_toStartOf="@+id/selectImageButton"
-        app:layout_constraintStart_toEndOf="@+id/filmImageView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/selectImageButton"
-        android:layout_width="122dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="127dp"
+        android:layout_height="52dp"
         android:text="@string/select_image_button_text"
         android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/captureImageButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.063" />
+
+    <Button
+        android:id="@+id/captureImageButton"
+        android:layout_width="115dp"
+        android:layout_height="52dp"
+        android:text="@string/capture_image_button_text"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.063" />
 
     <EditText
         android:id="@+id/titleEditText"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginBottom="49dp"
+        android:layout_width="343dp"
+        android:layout_height="53dp"
         android:hint="@string/hint_title"
         android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="@+id/directorEditText"
-        app:layout_constraintEnd_toEndOf="@+id/directorEditText"
-        app:layout_constraintStart_toStartOf="@+id/directorEditText"
-        app:layout_constraintTop_toBottomOf="@+id/selectImageButton" />
-
-    <Spinner
-        android:id="@+id/genreSpinner"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="53dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="54dp"
-        app:layout_constraintBottom_toTopOf="@+id/commentsEditText"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.277"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearEditText" />
-
-    <EditText
-        android:id="@+id/urlEditText"
-        android:layout_width="0dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginEnd="19dp"
-        android:hint="@string/hint_url"
-        android:inputType="textUri"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/directorEditText" />
-
-    <Spinner
-        android:id="@+id/formatSpinner"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="3dp"
-        app:layout_constraintBottom_toTopOf="@+id/commentsEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/genreSpinner" />
-
-    <EditText
-        android:id="@+id/yearEditText"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="51dp"
-        android:layout_marginBottom="50dp"
-        android:hint="@string/hint_year"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@+id/urlEditText"
-        app:layout_constraintEnd_toEndOf="@+id/urlEditText"
-        app:layout_constraintStart_toStartOf="@+id/urlEditText"
-        app:layout_constraintTop_toTopOf="@+id/directorEditText" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.207" />
 
     <EditText
         android:id="@+id/directorEditText"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="159dp"
-        android:layout_marginEnd="17dp"
+        android:layout_width="342dp"
+        android:layout_height="52dp"
         android:hint="@string/hint_director"
         android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.27"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.302" />
+
+    <EditText
+        android:id="@+id/urlEditText"
+        android:layout_width="341dp"
+        android:layout_height="49dp"
+        android:hint="@string/hint_url"
+        android:inputType="textUri"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.486" />
 
     <EditText
         android:id="@+id/commentsEditText"
-        android:layout_width="365dp"
-        android:layout_height="106dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="184dp"
+        android:layout_width="369dp"
+        android:layout_height="127dp"
         android:hint="@string/hint_comments"
         android:inputType="textMultiLine"
         android:minLines="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.867" />
+
+    <Spinner
+        android:id="@+id/genreSpinner"
+        android:layout_width="345dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.294"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.574" />
+
+    <EditText
+        android:id="@+id/yearEditText"
+        android:layout_width="343dp"
+        android:layout_height="49dp"
+        android:hint="@string/hint_year"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.277"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.393" />
+
+    <Spinner
+        android:id="@+id/formatSpinner"
+        android:layout_width="343dp"
+        android:layout_height="57dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.277"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.671" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="123dp"
+        android:layout_height="48dp"
+        android:text="@string/save_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.816"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.984" />
 
     <Button
         android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="84dp"
         android:text="@string/cancel_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/saveButton" />
-
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:text="@string/save_button_text"
-        app:layout_constraintBaseline_toBaselineOf="@+id/cancelButton"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.213"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.984" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

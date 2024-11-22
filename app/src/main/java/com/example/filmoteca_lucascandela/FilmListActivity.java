@@ -104,7 +104,7 @@ public boolean onContextItemSelected(MenuItem item) {
 
 
     private void addFilm() {
-        Film film = new Film(R.drawable.interstellar, "Titulo", "Director", 2024,
+        Film film = new Film(R.drawable.pelicula_new, "Titulo", "Director", 2024,
                 1,2, "https://www.imdb.com/title/tt0816692/", "Comentarios");
         films.add(film);
         ((FilmAdapter) filmListView.getAdapter()).notifyDataSetChanged();
