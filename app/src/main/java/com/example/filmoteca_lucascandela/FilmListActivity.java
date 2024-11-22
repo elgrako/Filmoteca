@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FilmListActivity extends AppCompatActivity {
@@ -52,31 +53,54 @@ public class FilmListActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_bar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_bar_about) {
+            Intent aboutIntent = new Intent(this, AboutActivity.class);
+            startActivity(aboutIntent);
+            return true;
+        } else if (item.getItemId() == R.id.menu_addfilm) {
+            addFilm();
+            ((FilmAdapter) filmListView.getAdapter()).notifyDataSetChanged();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
     public void onCreateContextMenu(android.view.ContextMenu menu, View v, android.view.ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         getMenuInflater().inflate(R.menu.menu_main, menu);
     }
 
     @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+public boolean onContextItemSelected(MenuItem item) {
+    AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
-        if (info != null) {
-            int position = info.position;
+    if (info != null) {
+        int position = info.position;
 
-            if (item.getItemId() == R.id.menu_about) {
-                Intent editIntent = new Intent(this, AboutActivity.class);
-                editIntent.putExtra("FILM_POSITION", position);
-                startActivity(editIntent);
-                return true;
-            } else if (item.getItemId() == R.id.menu_addfilm) {
-                addFilm();
-                ((FilmAdapter) filmListView.getAdapter()).notifyDataSetChanged();
-                return true;
-            }
+        if (item.getItemId() == R.id.menu_delete) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Borrar Pelicula")
+                    .setMessage("Estas seguro de que quieres borrar esta pelicula?")
+                    .setPositiveButton("Si", (dialogInterface, x) -> {
+                        films.remove(position);
+                        ((FilmAdapter) filmListView.getAdapter()).notifyDataSetChanged();
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+            return true;
         }
-        return super.onContextItemSelected(item);
     }
+    return super.onContextItemSelected(item);
+}
 
 
     private void addFilm() {

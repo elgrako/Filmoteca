@@ -18,6 +18,8 @@
     <string name="hint_director">Director</string>
     <string name="hint_year">Año</string>
     <string name="hint_comments">Comentarios</string>
-    <string name="menu_about">Acerca de</string>
-    <string name="menu_add">Añadir película</string>
+    <string name="menu_delete">Borrar Pelicula</string>
+    <string name="menu_add">Añadir Película</string>
+    <string name="menu_bar_about">Sobre Nosotros</string>
+    <string name="splash_name">Academia Cine</string>
 </resources>
