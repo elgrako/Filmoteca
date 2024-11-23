@@ -1,5 +1,7 @@
 package com.example.filmoteca_lucascandela;
 
+import static android.provider.MediaStore.ACTION_IMAGE_CAPTURE;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -64,7 +66,8 @@ public class FilmEditActivity extends AppCompatActivity {
         });
 
         captureButton.setOnClickListener(v -> {
-            Toast.makeText(this, "Funcionalidad no Implementada", Toast.LENGTH_SHORT).show();
+            Intent cameraIntent = new Intent(ACTION_IMAGE_CAPTURE);
+            startActivity(cameraIntent);
         });
 
         selectButton.setOnClickListener(v -> {
