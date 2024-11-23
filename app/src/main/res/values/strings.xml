@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">Filmoteca-LucasCandela</string>
+    <string name="web_button_text">Ir a la web</string>
+    <string name="volver_button_text">Volver</string>
+    <string name="soporte_button_text">Soporte</string>
+    <string name="creador_text">Creado por Lucas Candela</string>
+    <string name="about_text">Filmoteca</string>
+    <string name="year_label">Año:</string>
+    <string name="imdb_button_text">VER EN IMDB</string>
+    <string name="back_button_text">VOLVER AL PRINCIPAL</string>
+    <string name="director_text">Director:</string>
+    <string name="edit_button_text">EDITAR PELICULA</string>
+    <string name="capture_image_button_text">CAPTURA IMAGEN</string>
+    <string name="select_image_button_text">SELECCIONA IMAGEN</string>
+    <string name="save_button_text">GUARDAR</string>
+    <string name="cancel_button_text">CANCELAR</string>
+    <string name="hint_title">Título</string>
+    <string name="hint_url">URL</string>
+    <string name="hint_director">Director</string>
+    <string name="hint_year">Año</string>
+    <string name="hint_comments">Comentarios</string>
+    <string name="menu_delete">Borrar Pelicula</string>
+    <string name="menu_add">Añadir Película</string>
+    <string name="menu_bar_about">Sobre Nosotros</string>
+    <string name="splash_name">Academia de Cine</string>
 </resources>

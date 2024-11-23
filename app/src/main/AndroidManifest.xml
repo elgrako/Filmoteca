@@ -9,17 +9,30 @@
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Material3.DynamicColors.Dark.NoActionBar"
+        android:theme="@style/FilmotecaTheme"
         tools:targetApi="31">
-        <activity
-            android:name=".AboutActivity"
-            android:exported="true">
+
+        <activity android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/FilmotecaTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <activity android:name=".FilmDataActivity"
+            android:theme="@style/FilmotecaTheme" />
+
+        <activity android:name=".FilmEditActivity"
+            android:theme="@style/FilmotecaTheme" />
+
+        <activity android:name=".AboutActivity"
+            android:theme="@style/FilmotecaTheme" />
+
+        <activity
+            android:name=".FilmListActivity"
+            android:exported="true"
+            android:theme="@style/FilmotecaTheme" />
+    </application>
 </manifest>
