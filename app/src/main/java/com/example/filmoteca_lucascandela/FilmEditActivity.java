@@ -1,9 +1,10 @@
 package com.example.filmoteca_lucascandela;
 
-import static android.provider.MediaStore.ACTION_IMAGE_CAPTURE;
-
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,7 +12,10 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 public class FilmEditActivity extends AppCompatActivity {
 
@@ -28,7 +32,7 @@ public class FilmEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.film_edit_activity);
 
-        if( getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Filmoteca Editor");
         }
 
@@ -66,13 +70,17 @@ public class FilmEditActivity extends AppCompatActivity {
         });
 
         captureButton.setOnClickListener(v -> {
-            Intent cameraIntent = new Intent(ACTION_IMAGE_CAPTURE);
-            startActivity(cameraIntent);
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivity(cameraIntent);
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.CAMERA}, 101);
+            }
         });
 
-        selectButton.setOnClickListener(v -> {
-            Toast.makeText(this, "Funcionalidad no Implementada", Toast.LENGTH_SHORT).show();
-        });
+        selectButton.setOnClickListener(v -> Toast.makeText(this, "Funcionalidad no Implementada", Toast.LENGTH_SHORT).show());
     }
 
     private void initializeViews() {
@@ -147,4 +155,18 @@ public class FilmEditActivity extends AppCompatActivity {
             return false;
         }
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 101) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivity(cameraIntent);
+            } else {
+                Toast.makeText(this, "Se necesita permiso de la camara", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 }
