@@ -6,9 +6,11 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,6 +25,7 @@ import androidx.core.app.NotificationCompat;
 
 public class FilmListActivity extends AppCompatActivity {
     ListView filmListView;
+    ToastCustom tc = new ToastCustom();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +111,9 @@ public class FilmListActivity extends AppCompatActivity {
                         .setNegativeButton("No", null)
                         .show();
                 return true;
+            } else if (item.getItemId() == R.id.share){
+               // checkSmsPermissionAndShare(peliculaTitle);
+                return true;
             }
         }
         return super.onContextItemSelected(item);
@@ -174,5 +180,32 @@ public class FilmListActivity extends AppCompatActivity {
         Notification notification = builder.build();
         notificationManager.notify((int) System.currentTimeMillis(), notification);
     }
+
+
+
+
+    private void enviarViaWhatsApp(String phoneNumber, String message) {
+        try {
+            String url = "https://api.whatsapp.com/send?phone=" + phoneNumber +
+                    "&text=" + Uri.encode(message);
+            Intent whatsappIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(whatsappIntent);
+        } catch (ActivityNotFoundException e) {
+            tc.showCustomToast(this, "WhatsApp no esta instalado");
+        }
+    }
+
+    private void enviarViaAppMensajes(String phoneNumber, String message) {
+        Uri smsUri = Uri.parse("smsto:" + phoneNumber);
+        Intent smsIntent = new Intent(Intent.ACTION_SENDTO, smsUri);
+        smsIntent.putExtra("sms_body", message);
+
+        try {
+            startActivity(smsIntent);
+        } catch (ActivityNotFoundException e) {
+           tc.showCustomToast(this, "No hay ninguna aplicación disponible");
+        }
+    }
+
 
 }
