@@ -106,13 +106,14 @@ public class FilmListActivity extends AppCompatActivity {
                         .setPositiveButton("Si", (dialogInterface, x) -> {
                             films.remove(position);
                             ((FilmAdapter) filmListView.getAdapter()).notifyDataSetChanged();
-                            showNotification(true, deletedPelicula,false);
+                            showNotification(true, deletedPelicula, false);
                         })
                         .setNegativeButton("No", null)
                         .show();
                 return true;
-            } else if (item.getItemId() == R.id.share){
-               // checkSmsPermissionAndShare(peliculaTitle);
+            } else if (item.getItemId() == R.id.share) {
+                String peliculaTitle = films.get(position).getTitle();
+                checkSmsPermissionAndShare(peliculaTitle);
                 return true;
             }
         }
@@ -125,7 +126,7 @@ public class FilmListActivity extends AppCompatActivity {
                 1, 2, "https://www.imdb.com/title/tt0816692/", "Comentarios");
         films.add(film);
         ((FilmAdapter) filmListView.getAdapter()).notifyDataSetChanged();
-        showNotification(false, film.getTitle(),true);
+        showNotification(false, film.getTitle(), true);
     }
 
     public void showNotification(boolean msgType, String peliculaTitle, boolean goActivity) {
@@ -181,8 +182,42 @@ public class FilmListActivity extends AppCompatActivity {
         notificationManager.notify((int) System.currentTimeMillis(), notification);
     }
 
+    private void checkSmsPermissionAndShare(String peliculaTitle) {
+        if (checkSelfPermission(android.Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
+            showShareDialog(peliculaTitle);
+        } else {
+            requestPermissions(new String[]{android.Manifest.permission.SEND_SMS}, 102);
+        }
+    }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 102) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                tc.showCustomToast(this, "Permiso concedido. Intenta compartir de nuevo.");
+            } else {
+                tc.showCustomToast(this, "Permiso denegado.");
+            }
+        }
+    }
 
+    private void showShareDialog(String peliculaTitle) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Recomendar Película")
+                .setItems(new String[]{"Compartir por SMS", "Compartir por WhatsApp"},
+                        (dialog, selected) -> {
+                            String phoneNumber = "+34 644465171";
+                            String message = "Te recomiendo ver: " + peliculaTitle;
+
+                            if (selected == 0) {
+                                enviarViaAppMensajes(phoneNumber, message);
+                            } else if (selected == 1) {
+                                enviarViaWhatsApp(phoneNumber, message);
+                            }
+                        });
+        builder.create().show();
+    }
 
     private void enviarViaWhatsApp(String phoneNumber, String message) {
         try {
@@ -203,7 +238,7 @@ public class FilmListActivity extends AppCompatActivity {
         try {
             startActivity(smsIntent);
         } catch (ActivityNotFoundException e) {
-           tc.showCustomToast(this, "No hay ninguna aplicación disponible");
+            tc.showCustomToast(this, "No hay ninguna aplicación disponible");
         }
     }
 
