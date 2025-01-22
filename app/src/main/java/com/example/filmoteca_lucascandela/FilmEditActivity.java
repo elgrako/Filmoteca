@@ -1,6 +1,7 @@
 package com.example.filmoteca_lucascandela;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -10,9 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -26,6 +27,7 @@ public class FilmEditActivity extends AppCompatActivity {
     private EditText titleEditText, directorEditText, yearEditText, urlEditText, commentsEditText;
     private Spinner genreSpinner, formatSpinner;
     private Button captureButton, selectButton;
+    ToastCustom tc = new ToastCustom();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class FilmEditActivity extends AppCompatActivity {
         position = getIntent().getIntExtra("FILM_POSITION", -1);
 
         if (position < 0 || position >= FilmDataSource.films.size()) {
-            Toast.makeText(this, "Película no encontrada", Toast.LENGTH_SHORT).show();
+            tc.showCustomToast(this, "Película no encontrada");
             finish();
             return;
         }
@@ -54,17 +56,32 @@ public class FilmEditActivity extends AppCompatActivity {
         Button cancelButton = findViewById(R.id.cancelButton);
 
         saveButton.setOnClickListener(v -> {
-            if (saveChanges()) {
-                Toast.makeText(this, "Cambios aplicados correctamente", Toast.LENGTH_SHORT).show();
-                Intent resultIntent = new Intent();
-                resultIntent.putExtra("FILM_POSITION", position);
-                setResult(RESULT_OK, resultIntent);
-                finish();
-            }
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Editar Pelicula")
+                    .setMessage("¿Deseas guardar la pelicula?")
+                    .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            saveChanges();
+                            Intent resultIntent = new Intent();
+                            resultIntent.putExtra("FILM_POSITION", position);
+                            setResult(RESULT_OK, resultIntent);
+                            finish();
+                        }
+                    })
+                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
         });
 
         cancelButton.setOnClickListener(v -> {
-            Toast.makeText(this, "Los cambios han sido cancelados", Toast.LENGTH_SHORT).show();
+            tc.showCustomToast(this, "Los cambios han sido cancelados");
             setResult(RESULT_CANCELED);
             finish();
         });
@@ -80,7 +97,7 @@ public class FilmEditActivity extends AppCompatActivity {
             }
         });
 
-        selectButton.setOnClickListener(v -> Toast.makeText(this, "Funcionalidad no Implementada", Toast.LENGTH_SHORT).show());
+        selectButton.setOnClickListener(v -> tc.showCustomToast(this, "Funcionalidad no Implementada"));
     }
 
     private void initializeViews() {
@@ -135,7 +152,7 @@ public class FilmEditActivity extends AppCompatActivity {
             String comments = commentsEditText.getText().toString().trim();
 
             if (title.isEmpty() || director.isEmpty() || yearString.isEmpty()) {
-                Toast.makeText(this, "Rellena todos los campos", Toast.LENGTH_SHORT).show();
+                tc.showCustomToast(this, "Rellena todos los campos");
                 return false;
             }
 
@@ -151,7 +168,7 @@ public class FilmEditActivity extends AppCompatActivity {
 
             return true;
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "Pon un año valido", Toast.LENGTH_SHORT).show();
+            tc.showCustomToast(this, "Pon un año valido");
             return false;
         }
     }
@@ -164,7 +181,7 @@ public class FilmEditActivity extends AppCompatActivity {
                 Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivity(cameraIntent);
             } else {
-                Toast.makeText(this, "Se necesita permiso de la camara", Toast.LENGTH_SHORT).show();
+                tc.showCustomToast(this, "Se necesita permiso de la camara");
             }
         }
     }

@@ -5,5 +5,8 @@
         android:id="@+id/menu_delete"
         android:title="@string/menu_delete"
         app:showAsAction="never" />
-
+    <item
+        android:id="@+id/share"
+        android:title="@string/share"
+        app:showAsAction="never" />
 </menu>
