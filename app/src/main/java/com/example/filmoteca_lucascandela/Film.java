@@ -1,6 +1,8 @@
 package com.example.filmoteca_lucascandela;
 
-public class Film {
+import java.io.Serializable;
+
+public class Film implements Serializable {
 
     public final static int FORMAT_DVD = 0;
     public final static int FORMAT_BLURAY = 1;
