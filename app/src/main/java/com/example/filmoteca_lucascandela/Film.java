@@ -3,6 +3,7 @@ package com.example.filmoteca_lucascandela;
 import java.io.Serializable;
 
 public class Film implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     public final static int FORMAT_DVD = 0;
     public final static int FORMAT_BLURAY = 1;
