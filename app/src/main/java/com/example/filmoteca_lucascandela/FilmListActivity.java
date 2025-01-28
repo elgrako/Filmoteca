@@ -36,7 +36,7 @@ public class FilmListActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Filmoteca");
         }
 
-        FilmDataSource.Initialize();
+        FilmDataSource.initialize(this);
 
         filmListView = findViewById(R.id.filmListView);
 
