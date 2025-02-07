@@ -2,27 +2,34 @@ package com.example.filmoteca_lucascandela;
 
 import android.content.Context;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class FilmDataSource {
-    public static ArrayList<Film> films;
-    static FilmFiles filmFiles = new FilmFiles();
+    private static final String FILE_NAME = "films.dat";
+    static ArrayList<Film> films = new ArrayList<>();
 
-    public static void initialize(Context context) {
-        if (films == null) {
-            films = filmFiles.readFilms(context);
+    public static void inicializar(Context context) {
+        File file = new File(context.getFilesDir(), FILE_NAME);
 
-            if (films == null || films.isEmpty()) {
-                films = new ArrayList<>();
-                addDefaultFilms();
-                filmFiles.saveFilms(context, films);
+        if (file.exists()) {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+                films = (ArrayList<Film>) ois.readObject();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+        } else {
+            inializeFilms();
+            guardarPeliculas(context);
         }
     }
-    public static ArrayList<Film> getFilms() {
-        return films;
-    }
-    private static void addDefaultFilms() {
+
+    private static void inializeFilms() {
             films.add( new Film(R.drawable.interstellar, "Interstellar", "Christopher Nolan", 1984,
                     Film.GENRE_SCIFI, Film.FORMAT_DIGITAL, "http://www.imdb.com/title/tt0816692",
                     "A team of explorers travel throught a wormhole in space in an attempt to ensure humanity’s survival"));
@@ -108,4 +115,32 @@ public class FilmDataSource {
                             "consigue su gran oportunidad. Un misterioso asesino acecha a las estrellas, sangre amenaza con revelar su siniestro pasado."));
 
         }
+    public static void guardarPeliculas(Context context) {
+        File file = new File(context.getFilesDir(), FILE_NAME);
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(file.toPath()))) {
+            oos.writeObject(films);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static ArrayList<Film> getFilms() {
+        return films;
+    }
+
+    public static void addFilm(Context context, Film film) {
+        films.add(film);
+        guardarPeliculas(context);
+    }
+
+    public static void removeFilm(Context context, Film film) {
+        films.remove(film);
+        guardarPeliculas(context);
+    }
+
+    public static void updateFilm(Context context, int index, Film newFilm) {
+        films.set(index, newFilm);
+        guardarPeliculas(context);
+    }
 }

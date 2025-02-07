@@ -36,11 +36,11 @@ public class FilmListActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Filmoteca");
         }
 
-        FilmDataSource.initialize(this);
+        FilmDataSource.inicializar(FilmListActivity.this);
 
         filmListView = findViewById(R.id.filmListView);
 
-        FilmAdapter adapter = new FilmAdapter(this, R.layout.item_film, films);
+        FilmAdapter adapter = new FilmAdapter(this, R.layout.item_film, FilmDataSource.getFilms());
         filmListView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
@@ -60,9 +60,9 @@ public class FilmListActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         ((FilmAdapter) filmListView.getAdapter()).notifyDataSetChanged();
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -104,7 +104,7 @@ public class FilmListActivity extends AppCompatActivity {
                         .setTitle("Borrar Pelicula")
                         .setMessage("Estas seguro de que quieres borrar esta pelicula?")
                         .setPositiveButton("Si", (dialogInterface, x) -> {
-                            films.remove(position);
+                            FilmDataSource.removeFilm(this, films.get(position));
                             ((FilmAdapter) filmListView.getAdapter()).notifyDataSetChanged();
                             showNotification(true, deletedPelicula, false);
                         })
@@ -124,7 +124,7 @@ public class FilmListActivity extends AppCompatActivity {
     private void addFilm() {
         Film film = new Film(R.drawable.pelicula_new, "Titulo", "Director", 2024,
                 1, 2, "https://www.imdb.com/title/tt0816692/", "Comentarios");
-        films.add(film);
+        FilmDataSource.addFilm(this, film);
         ((FilmAdapter) filmListView.getAdapter()).notifyDataSetChanged();
         showNotification(false, film.getTitle(), true);
     }

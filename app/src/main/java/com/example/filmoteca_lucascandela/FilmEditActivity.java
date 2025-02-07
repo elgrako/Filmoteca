@@ -59,26 +59,29 @@ public class FilmEditActivity extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Editar Pelicula")
                     .setMessage("¿Deseas guardar la pelicula?")
-                    .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            saveChanges();
-                            Intent resultIntent = new Intent();
-                            resultIntent.putExtra("FILM_POSITION", position);
-                            setResult(RESULT_OK, resultIntent);
-                            finish();
-                        }
+                    .setPositiveButton("Aceptar", (dialog, which) -> {
+
+                        film.setTitle(titleEditText.getText().toString());
+                        film.setDirector(directorEditText.getText().toString());
+                        film.setYear(Integer.parseInt(yearEditText.getText().toString()));
+                        film.setImdbUrl(urlEditText.getText().toString());
+                        film.setComments(commentsEditText.getText().toString());
+                        film.setGenre(genreSpinner.getSelectedItemPosition());
+                        film.setFormat(formatSpinner.getSelectedItemPosition());
+
+                        FilmDataSource.guardarPeliculas(FilmEditActivity.this);
+
+                        Intent resultIntent = new Intent();
+                        resultIntent.putExtra("FILM_POSITION", position);
+                        setResult(RESULT_OK, resultIntent);
+                        finish();
                     })
-                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
+                    .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss());
 
             AlertDialog dialog = builder.create();
             dialog.show();
         });
+
 
         cancelButton.setOnClickListener(v -> {
             tc.showCustomToast(this, "Los cambios han sido cancelados");
@@ -140,36 +143,6 @@ public class FilmEditActivity extends AppCompatActivity {
         int formatIndex = film.getFormat();
         if (formatIndex >= 0 && formatIndex < formatSpinner.getCount()) {
             formatSpinner.setSelection(formatIndex);
-        }
-    }
-
-    private boolean saveChanges() {
-        try {
-            String title = titleEditText.getText().toString().trim();
-            String director = directorEditText.getText().toString().trim();
-            String yearString = yearEditText.getText().toString().trim();
-            String imdbUrl = urlEditText.getText().toString().trim();
-            String comments = commentsEditText.getText().toString().trim();
-
-            if (title.isEmpty() || director.isEmpty() || yearString.isEmpty()) {
-                tc.showCustomToast(this, "Rellena todos los campos");
-                return false;
-            }
-
-            int year = Integer.parseInt(yearString);
-
-            film.setTitle(title);
-            film.setDirector(director);
-            film.setYear(year);
-            film.setImdbUrl(imdbUrl);
-            film.setComments(comments);
-            film.setGenre(genreSpinner.getSelectedItemPosition());
-            film.setFormat(formatSpinner.getSelectedItemPosition());
-
-            return true;
-        } catch (NumberFormatException e) {
-            tc.showCustomToast(this, "Pon un año valido");
-            return false;
         }
     }
 
