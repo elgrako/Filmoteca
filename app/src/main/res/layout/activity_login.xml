@@ -8,7 +8,7 @@
     tools:context=".LoginActivity">
 
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/RegisterButton"
         android:layout_width="140dp"
         android:layout_height="0dp"
         android:layout_marginBottom="174dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
     <EditText
-        android:id="@+id/userField"
+        android:id="@+id/UserField"
         android:layout_width="222dp"
         android:layout_height="0dp"
         android:layout_marginBottom="39dp"
@@ -44,7 +44,7 @@
         app:layout_constraintBottom_toTopOf="@+id/loginButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userField" />
+        app:layout_constraintTop_toBottomOf="@+id/UserField" />
 
     <Button
         android:id="@+id/loginButton"
@@ -52,7 +52,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="32dp"
         android:text="Ingresar"
-        app:layout_constraintBottom_toTopOf="@+id/registerButton"
+        app:layout_constraintBottom_toTopOf="@+id/RegisterButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PasswordField" />
@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="47dp"
         android:layout_marginBottom="56dp"
-        app:layout_constraintBottom_toTopOf="@+id/userField"
+        app:layout_constraintBottom_toTopOf="@+id/UserField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

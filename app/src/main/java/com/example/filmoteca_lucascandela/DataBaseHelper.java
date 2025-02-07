@@ -56,4 +56,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return exists;
     }
+
+    public boolean userExists(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM usuarios WHERE usuario = ?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{username});
+        boolean exists = cursor.moveToFirst() && cursor.getInt(0) > 0;
+
+        cursor.close();
+        db.close();
+
+        return exists;
+    }
+
 }
