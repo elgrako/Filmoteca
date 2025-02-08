@@ -9,9 +9,9 @@
 
     <Button
         android:id="@+id/RegisterButton"
-        android:layout_width="140dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="174dp"
+        android:layout_width="183dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="176dp"
         android:text="Registrarse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,9 +20,9 @@
 
     <EditText
         android:id="@+id/UserField"
-        android:layout_width="222dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="39dp"
+        android:layout_width="216dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="43dp"
         android:drawableStart="@drawable/usuarioescalado"
         android:ems="10"
         android:hint="   Username"
@@ -34,9 +34,9 @@
 
     <EditText
         android:id="@+id/PasswordField"
-        android:layout_width="222dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="51dp"
+        android:layout_width="216dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="57dp"
         android:drawableStart="@drawable/llave"
         android:ems="10"
         android:hint="   Password"
@@ -48,9 +48,9 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="140dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="172dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="24dp"
         android:text="Ingresar"
         app:layout_constraintBottom_toTopOf="@+id/RegisterButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,8 +61,8 @@
         android:id="@+id/usuarioIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="47dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginBottom="58dp"
         app:layout_constraintBottom_toTopOf="@+id/UserField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

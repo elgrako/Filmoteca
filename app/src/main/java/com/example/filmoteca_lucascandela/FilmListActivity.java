@@ -80,6 +80,10 @@ public class FilmListActivity extends AppCompatActivity {
             addFilm();
             ((FilmAdapter) filmListView.getAdapter()).notifyDataSetChanged();
             return true;
+        } else if (item.getItemId() == R.id.menu_moreinfo) {
+            Intent moreInfoIntent = new Intent(this,MoreInfoActivity.class);
+            startActivity(moreInfoIntent);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

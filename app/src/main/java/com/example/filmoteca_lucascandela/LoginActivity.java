@@ -68,6 +68,8 @@ public class LoginActivity extends AppCompatActivity {
             editor.putString(KEY_LAST_USER, username);
             editor.apply();
 
+            Intent goListIntent = new Intent(this, FilmListActivity.class);
+            startActivity(goListIntent);
             Toast.makeText(this, "Inicio de sesion correcto", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
